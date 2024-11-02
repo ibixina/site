@@ -3,7 +3,7 @@
 import { Fira_Code } from 'next/font/google'
 import { Github, Linkedin, Mail } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 const GameOfLife = dynamic(() => import('../components/GameOfLife'), {
   ssr: false,
@@ -132,13 +132,6 @@ interface SkillCardProps {
   items: string[];
   color: 'blue' | 'green' | 'purple' | 'red';
 }
-const colors = [
-  'rgba(59, 130, 246, 0.5)',  // blue
-  'rgba(16, 185, 129, 0.5)',  // green
-  'rgba(139, 92, 246, 0.5)',  // purple
-  'rgba(239, 68, 68, 0.5)',   // red
-  'rgba(245, 158, 11, 0.5)',  // yellow
-]
 
 function SkillCard({ title, items, color }: SkillCardProps) {
   const colorClasses = {

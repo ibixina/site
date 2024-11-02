@@ -89,7 +89,7 @@ export default function GameOfLife() {
         ctx.fill()
       })
     })
-  }, [grid, CELL_SIZE, FIXED_HEIGHT, FIXED_WIDTH])
+  }, [grid])
 
   return (
     <div className="fixed inset-0 overflow-hidden">

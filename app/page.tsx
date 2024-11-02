@@ -1,3 +1,4 @@
+// app/page.tsx
 "use client"
 import { Fira_Code } from 'next/font/google'
 import { Github, Linkedin, Mail } from 'lucide-react'
@@ -40,7 +41,7 @@ export default function Home() {
           <section id="about" className="py-20">
             <h2 className="text-3xl font-semibold mb-6 text-blue-500">About Me</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              I&aposm a passionate computer science student with a keen interest in the intersection of artificial intelligence,
+              I&apos;m a passionate computer science student with a keen interest in the intersection of artificial intelligence,
               mathematics, and cryptography. My goal is to leverage these fields to create innovative solutions for complex problems.
             </p>
           </section>
@@ -48,9 +49,21 @@ export default function Home() {
           <section id="skills" className="py-20">
             <h2 className="text-3xl font-semibold mb-6 text-green-500">Skills & Interests</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <SkillCard title="Artificial Intelligence" items={["Machine Learning", "Neural Networks", "Natural Language Processing"]} color="blue" />
-              <SkillCard title="Mathematics" items={["Linear Algebra", "Calculus", "Probability & Statistics"]} color="green" />
-              <SkillCard title="Cryptography" items={["Public Key Cryptography", "Hash Functions", "Blockchain Technology"]} color="purple" />
+              <SkillCard
+                title="Artificial Intelligence"
+                items={["Machine Learning", "Neural Networks", "Natural Language Processing"]}
+                color="blue"
+              />
+              <SkillCard
+                title="Mathematics"
+                items={["Linear Algebra", "Calculus", "Probability & Statistics"]}
+                color="green"
+              />
+              <SkillCard
+                title="Cryptography"
+                items={["Public Key Cryptography", "Hash Functions", "Blockchain Technology"]}
+                color="purple"
+              />
             </div>
           </section>
 
@@ -101,7 +114,7 @@ export default function Home() {
 
         <footer className="bg-gray-100 py-6 mt-20">
           <div className="container mx-auto px-6 text-center text-gray-600">
-            <p> {new Date().getFullYear()} ibixina.</p>
+            <p>&copy; {new Date().getFullYear()} ibixina. All rights reserved.</p>
           </div>
         </footer>
       </div>
@@ -109,10 +122,30 @@ export default function Home() {
   )
 }
 
-function SkillCard({ title, items, color }: { title: string, items: string[], color: string }) {
+interface SkillCardProps {
+  title: string;
+  items: string[];
+  color: 'blue' | 'green' | 'purple' | 'red';
+}
+const colors = [
+  'rgba(59, 130, 246, 0.5)',  // blue
+  'rgba(16, 185, 129, 0.5)',  // green
+  'rgba(139, 92, 246, 0.5)',  // purple
+  'rgba(239, 68, 68, 0.5)',   // red
+  'rgba(245, 158, 11, 0.5)',  // yellow
+]
+
+function SkillCard({ title, items, color }: SkillCardProps) {
+  const colorClasses = {
+    blue: 'text-blue-500',
+    green: 'text-green-500',
+    purple: 'text-purple-500',
+    red: 'text-red-500'
+  };
+
   return (
-    <div className={`bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:scale-105`}>
-      <h3 className={`text-xl font-semibold mb-4 text-${color}-500`}>{title}</h3>
+    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:scale-105">
+      <h3 className={`text-xl font-semibold mb-4 ${colorClasses[color]}`}>{title}</h3>
       <ul className="list-disc list-inside text-gray-700">
         {items.map((item, index) => (
           <li key={index}>{item}</li>
@@ -122,10 +155,23 @@ function SkillCard({ title, items, color }: { title: string, items: string[], co
   )
 }
 
-function ProjectCard({ title, description, color }: { title: string, description: string, color: string }) {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  color: 'blue' | 'green' | 'purple' | 'red';
+}
+
+function ProjectCard({ title, description, color }: ProjectCardProps) {
+  const colorClasses = {
+    blue: 'text-blue-500',
+    green: 'text-green-500',
+    purple: 'text-purple-500',
+    red: 'text-red-500'
+  };
+
   return (
-    <div className={`bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:scale-105`}>
-      <h3 className={`text-xl font-semibold mb-2 text-${color}-500`}>{title}</h3>
+    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:scale-105">
+      <h3 className={`text-xl font-semibold mb-2 ${colorClasses[color]}`}>{title}</h3>
       <p className="text-gray-700">{description}</p>
     </div>
   )
@@ -144,14 +190,7 @@ function GameOfLife() {
   const rows = Math.floor(FIXED_HEIGHT / CELL_SIZE)
   const cols = Math.floor(FIXED_WIDTH / CELL_SIZE)
 
-  const colors = [
-    'rgba(59, 130, 246, 0.5)',  // blue
-    'rgba(16, 185, 129, 0.5)',  // green
-    'rgba(139, 92, 246, 0.5)',  // purple
-    'rgba(239, 68, 68, 0.5)',   // red
-    'rgba(245, 158, 11, 0.5)',  // yellow
 
-  ]
 
   const initialize = useCallback(() => {
     const newGrid = Array(rows).fill(null).map(() =>
@@ -214,7 +253,7 @@ function GameOfLife() {
         ctx.fill()
       })
     })
-  }, [grid, CELL_SIZE])
+  }, [grid, CELL_SIZE, FIXED_HEIGHT, FIXED_WIDTH])
 
   return (
     <div className="fixed inset-0 overflow-hidden">

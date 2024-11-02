@@ -1,12 +1,12 @@
-'use client'
-
+// app/page.tsx
+"use client"
 import { Fira_Code } from 'next/font/google'
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { useState, useEffect, useCallback, useRef } from 'react'
 
 const firaCode = Fira_Code({ subsets: ['latin'] })
 
-export function Page() {
+export default function Home() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -14,17 +14,17 @@ export function Page() {
   }, [])
 
   return (
-    <div className={`min-h-screen text-gray-100 ${firaCode.className}`}>
+    <div className={`min-h-screen bg-gray-50 text-gray-900 ${firaCode.className}`}>
       {mounted && <GameOfLife />}
 
       <div className="relative z-10">
-        <header className="sticky top-0 bg-gray-900/80 backdrop-blur-sm">
+        <header className="sticky z-30 top-0 bg-gray-50/80 backdrop-blur-sm">
           <nav className="container mx-auto px-6 py-4">
             <ul className="flex justify-center space-x-8">
-              <li><a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">About</a></li>
-              <li><a href="#skills" className="text-gray-300 hover:text-green-400 transition-colors">Skills</a></li>
-              <li><a href="#projects" className="text-gray-300 hover:text-purple-400 transition-colors">Projects</a></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-red-400 transition-colors">Contact</a></li>
+              <li><a href="#about" className="hover:text-blue-500 transition-colors">About</a></li>
+              <li><a href="#skills" className="hover:text-green-500 transition-colors">Skills</a></li>
+              <li><a href="#projects" className="hover:text-purple-500 transition-colors">Projects</a></li>
+              <li><a href="#contact" className="hover:text-red-500 transition-colors">Contact</a></li>
             </ul>
           </nav>
         </header>
@@ -32,16 +32,16 @@ export function Page() {
         <main className="container mx-auto px-6 pt-24">
           <section className="py-20 text-center">
             <h1 className="text-4xl font-bold mb-4 relative inline-block">
-              Jane Doe
+              Shishir
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-green-500 to-purple-500"></span>
             </h1>
-            <p className="text-xl text-gray-300">Computer Science Student | AI Enthusiast | Cryptography Explorer</p>
+            <p className="text-xl text-gray-600">Computer Science Student | AI Enthusiast | Cryptography Explorer</p>
           </section>
 
           <section id="about" className="py-20">
             <h2 className="text-3xl font-semibold mb-6 text-blue-500">About Me</h2>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              I'm a passionate computer science student with a keen interest in the intersection of artificial intelligence, 
+            <p className="text-lg text-gray-700 leading-relaxed">
+              I&apos;m a passionate computer science student with a keen interest in the intersection of artificial intelligence,
               mathematics, and cryptography. My goal is to leverage these fields to create innovative solutions for complex problems.
             </p>
           </section>
@@ -49,32 +49,44 @@ export function Page() {
           <section id="skills" className="py-20">
             <h2 className="text-3xl font-semibold mb-6 text-green-500">Skills & Interests</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <SkillCard title="Artificial Intelligence" items={["Machine Learning", "Neural Networks", "Natural Language Processing"]} color="blue" />
-              <SkillCard title="Mathematics" items={["Linear Algebra", "Calculus", "Probability & Statistics"]} color="green" />
-              <SkillCard title="Cryptography" items={["Public Key Cryptography", "Hash Functions", "Blockchain Technology"]} color="purple" />
+              <SkillCard
+                title="Artificial Intelligence"
+                items={["Machine Learning", "Neural Networks", "Natural Language Processing"]}
+                color="blue"
+              />
+              <SkillCard
+                title="Mathematics"
+                items={["Linear Algebra", "Calculus", "Probability & Statistics"]}
+                color="green"
+              />
+              <SkillCard
+                title="Cryptography"
+                items={["Public Key Cryptography", "Hash Functions", "Blockchain Technology"]}
+                color="purple"
+              />
             </div>
           </section>
 
           <section id="projects" className="py-20">
             <h2 className="text-3xl font-semibold mb-6 text-purple-500">Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ProjectCard 
-                title="AI-Powered Chess Engine" 
+              <ProjectCard
+                title="AI-Powered Chess Engine"
                 description="Developed a chess engine using deep learning techniques to evaluate positions and suggest optimal moves."
                 color="blue"
               />
-              <ProjectCard 
-                title="Secure Messaging App" 
-                description="Created an end-to-end encrypted messaging application using modern cryptographic protocols."
-                color="green"
+              <ProjectCard
+                title="Music Generation AI Model"
+                description="Created music generation tool using the concepts of large language models"
+                color="purple"
               />
-              <ProjectCard 
-                title="Mathematical Visualization Tool" 
+              <ProjectCard
+                title="Mathematical Visualization Tool"
                 description="Built an interactive web application for visualizing complex mathematical concepts and equations."
                 color="purple"
               />
-              <ProjectCard 
-                title="Blockchain-based Voting System" 
+              <ProjectCard
+                title="Blockchain-based Voting System"
                 description="Implemented a secure and transparent voting system using blockchain technology."
                 color="red"
               />
@@ -84,15 +96,15 @@ export function Page() {
           <section id="contact" className="py-20">
             <h2 className="text-3xl font-semibold mb-6 text-red-500">Get in Touch</h2>
             <div className="flex justify-center space-x-6">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-500 transition-colors">
+              <a href="https://github.com/ibixina" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-500 transition-colors">
                 <Github size={24} />
                 <span className="sr-only">GitHub</span>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-green-500 transition-colors">
+              <a href="https://www.linkedin.com/in/shishir-shrestha-7759b5331/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-green-500 transition-colors">
                 <Linkedin size={24} />
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a href="mailto:jane@example.com" className="text-gray-700 hover:text-purple-500 transition-colors">
+              <a href="mailto:theshishir01@gmail.com" className="text-gray-700 hover:text-purple-500 transition-colors">
                 <Mail size={24} />
                 <span className="sr-only">Email</span>
               </a>
@@ -100,9 +112,9 @@ export function Page() {
           </section>
         </main>
 
-        <footer className="bg-gray-900/50 py-6 mt-20">
-          <div className="container mx-auto px-6 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Jane Doe. All rights reserved.</p>
+        <footer className="bg-gray-100 py-6 mt-20">
+          <div className="container mx-auto px-6 text-center text-gray-600">
+            <p>&copy; {new Date().getFullYear()} ibixina. All rights reserved.</p>
           </div>
         </footer>
       </div>
@@ -110,11 +122,31 @@ export function Page() {
   )
 }
 
-function SkillCard({ title, items, color }: { title: string, items: string[], color: string }) {
+interface SkillCardProps {
+  title: string;
+  items: string[];
+  color: 'blue' | 'green' | 'purple' | 'red';
+}
+const colors = [
+  'rgba(59, 130, 246, 0.5)',  // blue
+  'rgba(16, 185, 129, 0.5)',  // green
+  'rgba(139, 92, 246, 0.5)',  // purple
+  'rgba(239, 68, 68, 0.5)',   // red
+  'rgba(245, 158, 11, 0.5)',  // yellow
+]
+
+function SkillCard({ title, items, color }: SkillCardProps) {
+  const colorClasses = {
+    blue: 'text-blue-500',
+    green: 'text-green-500',
+    purple: 'text-purple-500',
+    red: 'text-red-500'
+  };
+
   return (
-    <div className={`bg-gray-900/30 backdrop-blur-md p-6 rounded-lg shadow-sm border border-gray-700 transition-all duration-300 hover:shadow-md hover:scale-105`}>
-      <h3 className={`text-xl font-semibold mb-4 text-${color}-500`}>{title}</h3>
-      <ul className="list-disc list-inside text-gray-300">
+    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:scale-105">
+      <h3 className={`text-xl font-semibold mb-4 ${colorClasses[color]}`}>{title}</h3>
+      <ul className="list-disc list-inside text-gray-700">
         {items.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
@@ -123,47 +155,49 @@ function SkillCard({ title, items, color }: { title: string, items: string[], co
   )
 }
 
-function ProjectCard({ title, description, color }: { title: string, description: string, color: string }) {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  color: 'blue' | 'green' | 'purple' | 'red';
+}
+
+function ProjectCard({ title, description, color }: ProjectCardProps) {
+  const colorClasses = {
+    blue: 'text-blue-500',
+    green: 'text-green-500',
+    purple: 'text-purple-500',
+    red: 'text-red-500'
+  };
+
   return (
-    <div className={`bg-gray-900/30 backdrop-blur-md p-6 rounded-lg shadow-sm border border-gray-700 transition-all duration-300 hover:shadow-md hover:scale-105`}>
-      <h3 className={`text-xl font-semibold mb-2 text-${color}-500`}>{title}</h3>
-      <p className="text-gray-300">{description}</p>
+    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:scale-105">
+      <h3 className={`text-xl font-semibold mb-2 ${colorClasses[color]}`}>{title}</h3>
+      <p className="text-gray-700">{description}</p>
     </div>
   )
 }
 
 function GameOfLife() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [grid, setGrid] = useState<[number, number, number][][]>([])
-  const [isRunning, setIsRunning] = useState(true)
+  const [grid, setGrid] = useState<number[][]>([])
+  const [isRunning] = useState(true)
 
-  const rows = 50
-  const cols = 50
+  // Fixed dimensions for the game board
+  const FIXED_WIDTH = 2000  // Larger than typical viewport
+  const FIXED_HEIGHT = 2000
+  const CELL_SIZE = 35      // Fixed cell size
 
-  const baseColors = [
-    [59, 130, 246],   // blue
-    [16, 185, 129],   // green
-    [139, 92, 246],   // purple
-    [239, 68, 68],    // red
-    [245, 158, 11],   // yellow
-  ]
+  const rows = Math.floor(FIXED_HEIGHT / CELL_SIZE)
+  const cols = Math.floor(FIXED_WIDTH / CELL_SIZE)
 
-  const initialize = () => {
-    const newGrid = Array(rows).fill(null).map(() => 
-      Array(cols).fill(null).map(() => 
-        Math.random() > 0.7 ? baseColors[Math.floor(Math.random() * baseColors.length)] : [0, 0, 0]
-      )
+
+
+  const initialize = useCallback(() => {
+    const newGrid = Array(rows).fill(null).map(() =>
+      Array(cols).fill(null).map(() => Math.random() > 0.7 ? Math.floor(Math.random() * colors.length) + 1 : 0)
     )
     setGrid(newGrid)
-  }
-
-  const mixColors = (colors: [number, number, number][]) => {
-    const avgColor = colors.reduce(
-      (acc, color) => [acc[0] + color[0], acc[1] + color[1], acc[2] + color[2]],
-      [0, 0, 0]
-    )
-    return avgColor.map(c => Math.round(c / colors.length)) as [number, number, number]
-  }
+  }, [rows, cols])
 
   const runSimulation = useCallback(() => {
     if (!isRunning) return
@@ -172,34 +206,29 @@ function GameOfLife() {
         row.map((cell, j) => {
           const neighbors = [
             [-1, -1], [-1, 0], [-1, 1],
-            [0, -1],           [0, 1],
+            [0, -1], [0, 1],
             [1, -1], [1, 0], [1, 1]
-          ]
-          const liveNeighbors = neighbors.reduce((acc, [x, y]) => {
+          ].reduce((acc, [x, y]) => {
             const newI = (i + x + rows) % rows
             const newJ = (j + y + cols) % cols
-            return g[newI][newJ][0] !== 0 || g[newI][newJ][1] !== 0 || g[newI][newJ][2] !== 0 ? acc + 1 : acc
+            return acc + (g[newI][newJ] !== 0 ? 1 : 0)
           }, 0)
 
-          const neighborColors = neighbors
-            .map(([x, y]) => g[(i + x + rows) % rows][(j + y + cols) % cols])
-            .filter(color => color[0] !== 0 || color[1] !== 0 || color[2] !== 0)
-
-          if (liveNeighbors < 2 || liveNeighbors > 3) return [0, 0, 0]
-          if (liveNeighbors === 3) return neighborColors.length > 0 ? mixColors(neighborColors) : baseColors[Math.floor(Math.random() * baseColors.length)]
-          return cell[0] !== 0 || cell[1] !== 0 || cell[2] !== 0 ? cell : [0, 0, 0]
+          if (neighbors < 2 || neighbors > 3) return 0
+          if (neighbors === 3) return cell || Math.floor(Math.random() * colors.length) + 1
+          return cell
         })
       )
       return newGrid
     })
-  }, [isRunning])
+  }, [isRunning, rows, cols])
 
   useEffect(() => {
     initialize()
-  }, [])
+  }, [initialize])
 
   useEffect(() => {
-    const intervalId = setInterval(runSimulation, 200)
+    const intervalId = setInterval(runSimulation, 500)
     return () => clearInterval(intervalId)
   }, [runSimulation])
 
@@ -210,27 +239,32 @@ function GameOfLife() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const cellSize = Math.min(window.innerWidth, window.innerHeight) / rows
-
-    canvas.width = cols * cellSize
-    canvas.height = rows * cellSize
+    // Set fixed dimensions for the canvas
+    canvas.width = FIXED_WIDTH
+    canvas.height = FIXED_HEIGHT
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     grid.forEach((row, i) => {
       row.forEach((cell, j) => {
         ctx.beginPath()
-        ctx.rect(j * cellSize, i * cellSize, cellSize, cellSize)
-        ctx.fillStyle = `rgba(${cell[0]}, ${cell[1]}, ${cell[2]}, 0.7)`
+        ctx.rect(j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE)
+        ctx.fillStyle = cell ? colors[cell - 1] : 'rgba(229, 231, 235, 0.5)'
         ctx.fill()
       })
     })
-  }, [grid])
+  }, [grid, CELL_SIZE, FIXED_HEIGHT, FIXED_WIDTH])
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full z-0"
-    />
+    <div className="fixed inset-0 overflow-hidden">
+      <canvas
+        ref={canvasRef}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{
+          width: `${FIXED_WIDTH}px`,
+          height: `${FIXED_HEIGHT}px`,
+        }}
+      />
+    </div>
   )
 }

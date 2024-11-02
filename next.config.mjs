@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  basePath: process.env.NODE_ENV === "production" ? "/your-repo-name" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/your-repo-name/" : "",
+};
 
-export default nextConfig;
+export default nextConfig; /** @type {import('next').NextConfig} */
